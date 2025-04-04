@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rezervasyon Ödeme</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .info, .iban {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .passenger-info {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+    }
+
+    .btn {
+      width: 100%;
+      background-color: #28a745;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #218838;
+    }
+
+    .iban {
+      background-color: #ffeeba;
+      padding: 15px;
+      border: 1px solid #f0ad4e;
+      border-radius: 8px;
+      font-size: 16px;
+      color: #856404;
+    }
+        
+ /* Genel stil ayarları */
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Sticky header */
+        .sticky {
+    position: fixed; /* Sayfa yukarıda sabit kalsın */
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: top 0.3s ease; /* Animasyon efekti */
+}
+
+        /* Logo kısmı */
+        .sticky .logo {
+            font-size: 23px;
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .sticky .logo span {
+            font-size:20px;
+            color: #D4B36A; /* Turuncu renk */
+            margin-left: 5px;
+        }
+
+        /* Navbar listesi */
+        .navbar {
+            list-style-type: none;
+            display: flex;  
+            gap: 15px;
+        }
+
+        .navbar li {
+            display: inline-block;
+        }
+
+        .navbar li a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Navbar link hover efekti */
+        .navbar li a:hover {
+           /* Turuncu arka plan */
+            border-radius: 5px;
+        }
+
+        /* Müşteri hizmetleri linki */
+        .musterihizmet {
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+        }
+
+        .musterihizmet:hover {
+            background-color: #f2a900;
+            border-radius: 5px;
+        }
+
+        /* Hamburger menü ikonu */
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        
+        }
+
+        .menu-icon div {
+            width: 25px;
+            height: 3px;
+            background-color: rgb(0, 0, 0);
+            border-radius: 5px;
+           
+        }
+
+        /* Mobil uyumlu header */
+        @media (max-width: 768px) {
+            .sticky {
+        flex-direction: row; /* Satır düzeninde tut */
+        align-items: center;
+    }
+
+    .navbar {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        background-color: #ffffff;
+    }
+    .navbar.open {
+        display: flex;
+    }
+
+            .navbar li {
+                width: 100%;
+                text-align: center;
+                background-color: #D4B36A;;
+            }
+
+            .navbar li a {
+                padding: 1px;
+            }
+
+            /* Hamburger menü ikonu görünür hale gelir */
+            .menu-icon {
+        display: flex;
+        margin-left: auto; /* Sağa yasla */
+    }
+
+            /* Açık menü */
+            .navbar.open {
+                display: flex;
+            }
+        }
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<br><br><br><br><br><br>
+
+<bbody>
+  <header class="sticky">
+      <img src="resim/logoooo.jpg" height="90" alt="AKASLAN Logo">
+      <a class="logo" onclick="window.location.href='index.html'">AKASLAN<span>TURİZM</span></a>
+
+      <!-- Hamburger Menü İkonu -->
+      <div class="menu-icon" onclick="toggleMenu()">
+          <div></div>
+          <div></div>
+          <div></div>
+      </div>
+
+      <!-- Navbar -->
+      <ul class="navbar">
+          <li><a href="#" onclick="window.location.href='hakkımızda.html'">Hakkımızda</a></li>
+          <li><a href="#" onclick="window.location.href='yat.html'">Yat Turu</a></li>
+          <li><a class="araçlar">Kiralık Araç</a></li>
+         
+          <li><a href="tel:+90 5354940385">İletişim</a></li>
+
+      </ul>
+  </header>
+
+  <script>
+      
+  let lastScrollTop = 0;
+  const header = document.querySelector(".sticky");
+
+  window.addEventListener("scroll", function() {
+      let scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+      if (scrollTop > lastScrollTop) {
+          // Aşağı kaydırıyorsa menüyü gizle
+          header.style.top = "-100px"; 
+      } else {
+          // Yukarı kaydırıyorsa menüyü göster
+          header.style.top = "0"; 
+      }
+
+      lastScrollTop = scrollTop;
+  });
+
+      // Menü açma ve kapama fonksiyonu
+      function toggleMenu() {
+          const navbar = document.querySelector('.navbar');
+          navbar.classList.toggle('open');
+      }
+  </script>
+</bbody>
+
+
+
+<body>
+  <div class="container">
+    <h2>Rezervasyon Ödeme</h2>
+
+    <div class="info">
+      <strong>Rota:</strong> <span id="route">İstanbul Havalimanı (IST) →  Sabiha Gökçen Havalimanı (SAW) Transfer</span><br>
+      <strong>Fiyat:</strong> <span id="price">58,00 $</span>
+    </div>
+
+    <div class="info">
+      <label for="passenger-count">Kişi Sayısı:</label>
+      <input type="number" id="passenger-count" min="1" max="10" value="1" onchange="generatePassengerFields()">
+    </div>
+
+    <div id="passenger-fields"></div>
+
+    <div class="iban">
+        <strong>Ödeme için IBAN:</strong><br>
+        TR84 0011 1000 0000 0150 0177 41<br>
+        <span><strong>Alıcı:</strong> Okan Akaslan</span>
+      </div>
+      
+
+    <button class="btn" onclick="sendEmail()">Mail Gönder</button>
+  </div>
+
+  <script>
+    function generatePassengerFields() {
+      const count = parseInt(document.getElementById("passenger-count").value);
+      const container = document.getElementById("passenger-fields");
+      container.innerHTML = "";
+
+      for (let i = 1; i <= count; i++) {
+        const div = document.createElement("div");
+        div.classList.add("passenger-info");
+
+        if (i === 1) {
+          div.innerHTML = `
+            <strong>Yolcu ${i}</strong>
+            <label>Ad Soyad:</label>
+            <input type="text" class="passenger-name" placeholder="Adınızı giriniz" required>
+            <label>Uçuş Kodu:</label>
+            <input type="text" class="flight-code" placeholder="Uçuş kodu giriniz" required>
+            <label>Telefon:</label>
+            <input type="text" class="phone-number" placeholder="Telefon numarası giriniz" required>
+          `;
+        } else {
+          div.innerHTML = `
+            <strong>Yolcu ${i}</strong>
+            <label>Ad Soyad:</label>
+            <input type="text" class="passenger-name" placeholder="Adınızı giriniz" required>
+          `;
+        }
+
+        container.appendChild(div);
+      }
+    }
+
+    function sendEmail() {
+      const route = document.getElementById("route").textContent;
+      const price = document.getElementById("price").textContent;
+
+      const nameInputs = document.querySelectorAll('.passenger-name');
+      const flightInput = document.querySelector('.flight-code');
+      const phoneInput = document.querySelector('.phone-number');
+
+      let emailBody = "Yolcu Bilgileri:%0D%0A";
+
+      nameInputs.forEach((input, index) => {
+        emailBody += `Yolcu ${index + 1}:%0D%0A`;
+        emailBody += `Ad Soyad: ${input.value}%0D%0A`;
+
+        if (index === 0) {
+          emailBody += `Uçuş Kodu: ${flightInput?.value || ""}%0D%0A`;
+          emailBody += `Telefon: ${phoneInput?.value || ""}%0D%0A`;
+          emailBody += `Kişi Sayısı:  ${phoneInput?.value || ""}%0D%0A`;
+        }
+
+        emailBody += "%0D%0A";
+      });
+
+      emailBody += `Rota: ${route}%0D%0A`;
+      emailBody += `Fiyat: ${price}%0D%0A`;
+
+      window.location.href = "mailto:okanakaslan51@icloud.com?subject=Rezervasyon Bilgileri&body=" + emailBody;
+    }
+
+    window.onload = generatePassengerFields;
+  </script>
+</body>
+</html>

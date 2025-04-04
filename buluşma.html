@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buluşma Noktamız</title>
+    <style>
+        /* Genel Stil */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            padding: 40px 0;
+            font-size: 36px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .havalimanı-bul, .sabiha-bul {
+            width: 100%;
+            max-width: 450px; /* Kutuları küçülttük */
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .havalimanı-bul:hover, .sabiha-bul:hover {
+            transform: translateY(-10px);
+        }
+
+        .havalimanı-bul img, .sabiha-bul img {
+            width: 100%;
+            height: auto;
+            border-bottom: 5px solid #eee;
+        }
+
+        .text {
+            padding: 15px; /* Padding'i küçülttük */
+        }
+
+        .text h3 {
+            color: #333;
+            font-size: 24px; /* Başlık boyutunu biraz küçülttük */
+            margin-bottom: 10px;
+        }
+
+        .text p {
+            color: #555;
+            font-size: 15px; /* Yazı boyutunu küçülttük */
+            line-height: 1.6;
+        }
+
+        .text p strong {
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 28px;
+            }
+
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .havalimanı-bul, .sabiha-bul {
+                width: 90%;
+            }
+        }
+        
+
+
+
+
+       
+ /* Genel stil ayarları */
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Sticky header */
+        .sticky {
+    position: fixed; /* Sayfa yukarıda sabit kalsın */
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: top 0.3s ease; /* Animasyon efekti */
+}
+
+        /* Logo kısmı */
+        .sticky .logo {
+            font-size: 23px;
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .sticky .logo span {
+            font-size:20px;
+            color: #D4B36A; /* Turuncu renk */
+            margin-left: 5px;
+        }
+
+        /* Navbar listesi */
+        .navbar {
+            list-style-type: none;
+            display: flex;  
+            gap: 15px;
+        }
+
+        .navbar li {
+            display: inline-block;
+        }
+
+        .navbar li a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Navbar link hover efekti */
+        .navbar li a:hover {
+           /* Turuncu arka plan */
+            border-radius: 5px;
+        }
+
+        /* Müşteri hizmetleri linki */
+        .musterihizmet {
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+        }
+
+        .musterihizmet:hover {
+            background-color: #f2a900;
+            border-radius: 5px;
+        }
+
+        /* Hamburger menü ikonu */
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        
+        }
+
+        .menu-icon div {
+            width: 25px;
+            height: 3px;
+            background-color: rgb(0, 0, 0);
+            border-radius: 5px;
+           
+        }
+
+        /* Mobil uyumlu header */
+        @media (max-width: 768px) {
+            .sticky {
+        flex-direction: row; /* Satır düzeninde tut */
+        align-items: center;
+    }
+
+    .navbar {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        background-color: #ffffff;
+    }
+    .navbar.open {
+        display: flex;
+    }
+
+            .navbar li {
+                width: 100%;
+                text-align: center;
+                background-color: #D4B36A;;
+            }
+
+            .navbar li a {
+                padding: 1px;
+            }
+
+            /* Hamburger menü ikonu görünür hale gelir */
+            .menu-icon {
+        display: flex;
+        margin-left: auto; /* Sağa yasla */
+    }
+
+            /* Açık menü */
+            .navbar.open {
+                display: flex;
+            }
+        }
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+   
+
+<bbody>
+    <header class="sticky">
+        <img src="resim/logoooo.jpg" height="90" alt="AKASLAN Logo">
+        <a class="logo" onclick="window.location.href='index.html'">AKASLAN<span>TURİZM</span></a>
+
+        <!-- Hamburger Menü İkonu -->
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <!-- Navbar -->
+        <ul class="navbar">
+            <li><a href="#" onclick="window.location.href='hakkımızda.html'">Hakkımızda</a></li>
+            <li><a href="#" onclick="window.location.href='yat.html'">Yat Turu</a></li>
+            <li><a class="araçlar">Kiralık Araç</a></li>
+           
+            <li><a href="tel:+90 5354940385">İletişim</a></li>
+
+        </ul>
+    </header>
+
+    <script>
+        
+    let lastScrollTop = 0;
+    const header = document.querySelector(".sticky");
+
+    window.addEventListener("scroll", function() {
+        let scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+            // Aşağı kaydırıyorsa menüyü gizle
+            header.style.top = "-100px"; 
+        } else {
+            // Yukarı kaydırıyorsa menüyü göster
+            header.style.top = "0"; 
+        }
+
+        lastScrollTop = scrollTop;
+    });
+
+        // Menü açma ve kapama fonksiyonu
+        function toggleMenu() {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('open');
+        }
+    </script>
+</bbody>
+    <h2>Buluşma Noktamız</h2>
+    <div class="container">
+        <!-- İstanbul Havalimanı -->
+        <div class="havalimanı-bul">
+            <img src="resim/bul1.jpg" alt="İstanbul Havalimanı">
+            <div class="text">
+                <h3>İstanbul Havalimanı Buluşma Noktamız (IST)</h3>
+                <p>İstanbul Havalimanı'na vardığınızda, gümrük işlemlerinizi tamamlayın ve bagajınızı alın, havalimanı binasından çıkmak için lütfen Kapı 14'e ilerleyin. Çıkıştan çıkınca solunuzda G55 işaretini göreceksiniz. Lütfen adınızı ve rezervasyon kodunuzu aracınıza kadar size yardımcı olacak iş arkadaşlarımıza bildirin. Havalimanındaki operasyonel nedenlerden dolayı, aracınız sizi en az 5 dakika ve en fazla 15 dakika içinde alacaktır.</p>
+            </div>
+        </div>
+
+        <!-- Sabiha Gökçen Havalimanı -->
+        <div class="sabiha-bul">
+            <img src="resim/bul2.jpg" alt="Sabiha Gökçen Havalimanı">
+            <div class="text">
+                <h3>Sabiha Gökçen Havalimanı Buluşma Noktamız (SAW)</h3>
+                <p>Sabiha Gökçen Havalimanı'na vardığınızda, gümrük işlemlerinizi tamamlayıp bagajınızı aldıktan sonra, havalimanı binasından çıkış için Kapıya ilerleyin. Kapıdan çıktığınızda kapının karşısında Simit Sarayı'nı göreceksiniz, G55 olan karşılama panomuz Simit Sarayı'nın yanında bulunmaktadır. Lütfen adınızı ve aracınıza ait rezervasyon kodunuzu size yardımcı olacak meslektaşlarımıza bildirin. Havalimanındaki operasyonel nedenlerden dolayı aracınız sizi minimum 5, maksimum 15 dakikada alacaktır.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
